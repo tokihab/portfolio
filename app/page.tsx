@@ -18,17 +18,19 @@ export default function Home() {
   // Pulling slides from the new public folders. 
   // Adjust the number of items in these arrays to match the exact number of slides you exported!
   const textAnalysisSlides = [
-    "/masrisense/MASRISENSE.png", 
-    "/masrisense/MASRISENSE(1).png",
-    "/masrisense/MASRISENSE(2).png",
-    "/masrisense/MASRISENSE(3).png"
+    "/masrisense/MASISENSE.png", 
+    "/masrisense/MASISENSE(1).png",
+    "/masrisense/MASISENSE(2).png",
+    "/masrisense/MASISENSE(3).png",
+    "/masrisense/MASISENSE(4).png",
+    "/masrisense/MASISENSE(5).png",
   ];
   
   const voicePipelineSlides = [
-    "/livecat/livecat.png", 
-    "/livecat/livecat(1).png",
-    "/livecat/livecat(2).png",
-    "/livecat/livecat(3).png"
+    "/vc/livecat.png", 
+    "/vc/livecat(1).png",
+    "/vc/livecat(2).png",
+    "/vc/livecat(3).png"
   ];
 
   return (
