@@ -2,7 +2,7 @@ export default function Projects() {
   const projects = [
     {
       title: "MASRISENSE",
-      description: "Curated MASRISET (4.5M+ rows) and continued MLM pretraining on MASRIBERTv3. Evaluated multi-task emotion/sarcasm/sentiment detection and built a multi-scale acoustic model.",
+      description: "Curated MASRISET (4.5M+ rows) and continued MLM pretraining on MASRIBERTv3 (perplexity: 16). Evaluated multi-task emotion, sarcasm, and sentiment detection and built a multi-scale acoustic model.",
       skills: ["PyTorch", "Hugging Face", "Transformers", "CNN + BiLSTM"]
     },
     {
@@ -16,33 +16,28 @@ export default function Projects() {
       skills: ["TensorFlow", "Keras", "Attention"]
     },
     {
-      title: "Movie Recommender",
-      description: "Built collaborative filtering and content-based recommendation system for personalized movie suggestions.",
-      skills: ["NLP", "Machine Learning", "Python"]
-    },
-    {
       title: "3-DOF RPR Robotic Manipulator",
-      description: "SerialLink model with Denavit-Hartenberg parameters; validated reachability and captured automated motion data.",
+      description: "SerialLink model with Denavit-Hartenberg parameters; validated reachability and captured automated motion data for further analysis.",
       skills: ["MATLAB", "Robotics Toolbox"]
-    },
-    {
-      title: "Image Processing Toolkit",
-      description: "30+ functions for spatial/frequency domain operations with a GUI application enabling real-time manipulation.",
-      skills: ["MATLAB"]
     }
   ];
 
   return (
-    <div className="py-10">
-      <h1 className="text-4xl font-bold mb-8">All Projects</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="py-12 space-y-12">
+      <h1 className="text-6xl font-space font-extrabold uppercase bg-dark text-beige inline-block px-6 py-2 shadow-brutal">
+        Project Archive
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {projects.map((proj, idx) => (
-          <div key={idx} className="border p-6 rounded-lg bg-white shadow-sm hover:shadow-md transition">
-            <h2 className="text-2xl font-semibold mb-2">{proj.title}</h2>
-            <p className="text-gray-700 mb-4">{proj.description}</p>
-            <div className="flex flex-wrap gap-2">
+          <div key={idx} className="border-2 border-dark p-8 bg-offWhite shadow-brutal flex flex-col justify-between">
+            <div>
+              <h2 className="text-3xl font-space font-bold mb-4 uppercase">{proj.title}</h2>
+              <p className="text-dark font-medium mb-8 leading-relaxed">{proj.description}</p>
+            </div>
+            <div className="flex flex-wrap gap-2 border-t-2 border-dark pt-4">
+              <span className="w-full text-xs font-bold uppercase mb-1">Architecture / Stack:</span>
               {proj.skills.map((skill, sIdx) => (
-                <span key={sIdx} className="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded font-medium">
+                <span key={sIdx} className="bg-beige text-dark text-sm px-3 py-1 font-bold border-2 border-dark shadow-[2px_2px_0px_0px_#181818]">
                   {skill}
                 </span>
               ))}
