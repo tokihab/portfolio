@@ -34,7 +34,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="h-[500px] border-2 border-dark bg-bgWhite shadow-brutal-sm">
             <iframe 
-              src="https://huggingface.co/spaces/T0KII/taMASRIBERTs" 
+              src="[https://t0kii-tamasriberts.hf.space](https://t0kii-tamasriberts.hf.space)"
               className="w-full h-full border-0"
               title="Gradio Text Analysis"
             ></iframe>
