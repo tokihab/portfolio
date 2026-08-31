@@ -9,7 +9,7 @@ export default function Slider({ slides }: { slides: string[] }) {
 
   return (
     <div className="border-2 border-dark bg-beige shadow-brutal flex flex-col h-full">
-      <div className="flex-grow flex items-center justify-center p-4 bg-offWhite border-b-2 border-dark min-h-[300px]">
+      <div className="grow flex items-center justify-center p-4 bg-offWhite border-b-2 border-dark min-h-75">
         {/* Placeholder rendering - replace img src with actual slide paths later */}
         <img src={slides[currentIndex]} alt={`Slide ${currentIndex + 1}`} className="max-h-full object-contain" />
       </div>
