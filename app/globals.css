@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Our Custom Colors */
+  --color-bgWhite: #FFFFFF;
+  --color-offWhite: #FCFCFA;
+  --color-beige: #F0EFEB;
+  --color-dark: #4A3728;
+
+  /* Our Custom Fonts from layout.tsx */
+  --font-space: var(--font-space);
+  --font-mono: var(--font-mono);
+
+  /* Our Brutalist Shadows */
+  --shadow-brutal: 6px 6px 0px 0px #4A3728;
+  --shadow-brutal-sm: 4px 4px 0px 0px #4A3728;
+}
+
+/* Base layer reset to ensure the background is white and text is brown */
+@layer base {
+  body {
+    background-color: var(--color-bgWhite);
+    color: var(--color-dark);
+  }
+}
