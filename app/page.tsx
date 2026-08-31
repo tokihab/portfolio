@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from './components/slider';
 
-// Updated Stacked Retro Button Component using custom PNGs
+// Stacked Retro Button Component using your PNG icons
 const RetroStackButton = ({ href, label, iconSrc }: { href: string, label: string, iconSrc: string }) => (
   <a 
     href={href} 
@@ -15,21 +15,20 @@ const RetroStackButton = ({ href, label, iconSrc }: { href: string, label: strin
 );
 
 export default function Home() {
-  // Pulling slides from the new public folders. 
-  // Adjust the number of items in these arrays to match the exact number of slides you exported!
+  // Paths updated to match your exact file structure
   const textAnalysisSlides = [
-    "public/masrisense/MASISENSE.png", 
-    "public/masrisense/MASISENSE(1).png",
-    "public/masrisense/MASISENSE(2).png",
-    "public/masrisense/MASISENSE(3).png",
-    "public/masrisense/MASISENSE(4).png",
-    "public/masrisense/MASISENSE(5).png",
+    "/masrisense/MASISENSE.png", 
+    "/masrisense/MASISENSE(1).png",
+    "/masrisense/MASISENSE(2).png",
+    "/masrisense/MASISENSE(3).png",
+    "/masrisense/MASISENSE(4).png",
+    "/masrisense/MASISENSE(5).png"
   ];
   
   const voicePipelineSlides = [
-    "public/vc/livecat.png", 
-    "public/vc/livecat(1).png",
-    "public/vc/livecat(2).png",
+    "/vc/livecat.png", 
+    "/vc/livecat(1).png",
+    "/vc/livecat(2).png"
   ];
 
   return (
@@ -38,7 +37,7 @@ export default function Home() {
       {/* ================= LEFT COLUMN ================= */}
       <aside className="bg-bgWhite flex flex-col divide-y-2 divide-dark order-2 lg:order-1">
         
-        {/* 1. Link Stack */}
+        {/* 1. Link Stack (Booking removed, just GitHub, LinkedIn, CV) */}
         <div className="p-4 bg-offWhite text-center">
           <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm">Link Me:</h3>
           <div className="flex flex-col gap-3">
@@ -65,7 +64,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 3. Clickable Retro Calendar */}
+        {/* 3. Clickable Retro Calendar (Primary Booking Button) */}
         <a href="https://calendly.com/tony0100512-cs" target="_blank" className="block p-3 bg-offWhite hover:bg-beige transition-colors cursor-pointer group">
           <div className="text-center font-space font-bold border-b-2 border-dark pb-1 mb-2 group-hover:text-blue-700">08 / 2026 (Book Call)</div>
           <div className="grid grid-cols-7 text-xs text-center font-mono font-bold gap-1 mb-1 bg-dark text-beige py-1">
@@ -123,7 +122,6 @@ export default function Home() {
             ></iframe>
           </div>
           
-          {/* Explicitly sized container prevents the slider from collapsing */}
           <div className="w-full h-87.5 mb-6">
             <Slider slides={textAnalysisSlides} />
           </div>
@@ -148,7 +146,6 @@ export default function Home() {
               </iframe>
           </div>
           
-          {/* Explicitly sized container prevents the slider from collapsing */}
           <div className="w-full h-87.5 mb-6">
             <Slider slides={voicePipelineSlides} />
           </div>
