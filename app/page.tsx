@@ -9,15 +9,27 @@ const RetroStackButton = ({ href, label, iconSrc }: { href: string, label: strin
     rel="noopener noreferrer"
     className="flex items-center gap-4 bg-beige border-2 border-t-bgWhite border-l-bgWhite border-b-dark border-r-dark px-4 py-3 font-space uppercase text-sm font-bold text-dark hover:bg-offWhite active:border-t-dark active:border-l-dark active:border-b-bgWhite active:border-r-bgWhite active:translate-y-0.5 transition-all"
   >
-    {/* Using your uploaded PNGs with a fixed size to keep the button aligned */}
     <img src={iconSrc} alt={`${label} icon`} className="w-6 h-6 object-contain" />
     <span>{label}</span>
   </a>
 );
 
 export default function Home() {
-  const textAnalysisSlides = ["https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+1", "https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+2"];
-  const voicePipelineSlides = ["https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+1", "https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+2"];
+  // Pulling slides from the new public folders. 
+  // Adjust the number of items in these arrays to match the exact number of slides you exported!
+  const textAnalysisSlides = [
+    "/masrisense/MASRISENSE.png", 
+    "/masrisense/MASRISENSE(1).png",
+    "/masrisense/MASRISENSE(2).png",
+    "/masrisense/MASRISENSE(3).png"
+  ];
+  
+  const voicePipelineSlides = [
+    "/livecat/livecat.png", 
+    "/livecat/livecat(1).png",
+    "/livecat/livecat(2).png",
+    "/livecat/livecat(3).png"
+  ];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-dark">
@@ -25,7 +37,7 @@ export default function Home() {
       {/* ================= LEFT COLUMN ================= */}
       <aside className="bg-bgWhite flex flex-col divide-y-2 divide-dark order-2 lg:order-1">
         
-        {/* 1. Link Stack (Underneath each other using your custom PNGs) */}
+        {/* 1. Link Stack */}
         <div className="p-4 bg-offWhite text-center">
           <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm">Link Me:</h3>
           <div className="flex flex-col gap-3">
@@ -110,6 +122,7 @@ export default function Home() {
             ></iframe>
           </div>
           
+          {/* Explicitly sized container prevents the slider from collapsing */}
           <div className="w-full h-87.5 mb-6">
             <Slider slides={textAnalysisSlides} />
           </div>
@@ -127,13 +140,14 @@ export default function Home() {
           <div className="w-full aspect-video border-2 border-dark bg-bgWhite shadow-brutal-sm mb-6 relative">
              <iframe 
                 className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                src="https://www.youtube.com/embed/XhfqIOjIs9w" 
                 title="YouTube video player" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen>
               </iframe>
           </div>
           
+          {/* Explicitly sized container prevents the slider from collapsing */}
           <div className="w-full h-87.5 mb-6">
             <Slider slides={voicePipelineSlides} />
           </div>
