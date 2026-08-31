@@ -1,15 +1,16 @@
 import React from 'react';
 import Slider from './components/slider';
 
-// New 3D Square Button Component
-const RetroSquareButton = ({ href, label, icon }: { href: string, label: string, icon: string }) => (
+// Updated Stacked Retro Button Component using custom PNGs
+const RetroStackButton = ({ href, label, iconSrc }: { href: string, label: string, iconSrc: string }) => (
   <a 
     href={href} 
     target="_blank" 
     rel="noopener noreferrer"
-    className="flex flex-col items-center justify-center aspect-square bg-beige border-2 border-t-bgWhite border-l-bgWhite border-b-dark border-r-dark p-2 font-space uppercase text-xs font-bold text-dark hover:bg-offWhite active:border-t-dark active:border-l-dark active:border-b-bgWhite active:border-r-bgWhite active:translate-y-0.5 transition-all"
+    className="flex items-center gap-4 bg-beige border-2 border-t-bgWhite border-l-bgWhite border-b-dark border-r-dark px-4 py-3 font-space uppercase text-sm font-bold text-dark hover:bg-offWhite active:border-t-dark active:border-l-dark active:border-b-bgWhite active:border-r-bgWhite active:translate-y-0.5 transition-all"
   >
-    <span className="text-2xl mb-1">{icon}</span>
+    {/* Using your uploaded PNGs with a fixed size to keep the button aligned */}
+    <img src={iconSrc} alt={`${label} icon`} className="w-6 h-6 object-contain" />
     <span>{label}</span>
   </a>
 );
@@ -24,14 +25,13 @@ export default function Home() {
       {/* ================= LEFT COLUMN ================= */}
       <aside className="bg-bgWhite flex flex-col divide-y-2 divide-dark order-2 lg:order-1">
         
-        {/* 1. Link Grid (4 Squares) */}
+        {/* 1. Link Stack (Underneath each other using your custom PNGs) */}
         <div className="p-4 bg-offWhite text-center">
           <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm">Link Me:</h3>
-          <div className="grid grid-cols-2 gap-3">
-            <RetroSquareButton href="https://calendly.com/tony0100512-cs" icon="📅" label="Book" />
-            <RetroSquareButton href="https://github.com/tokihab" icon="💻" label="GitHub" />
-            <RetroSquareButton href="https://www.linkedin.com/in/toni-ihab/" icon="🔗" label="LinkedIn" />
-            <RetroSquareButton href="/cv.pdf" icon="📄" label="CV" />
+          <div className="flex flex-col gap-3">
+            <RetroStackButton href="https://github.com/tokihab" iconSrc="/github.png" label="GitHub" />
+            <RetroStackButton href="https://www.linkedin.com/in/toni-ihab/" iconSrc="/linkedin.png" label="LinkedIn" />
+            <RetroStackButton href="/cv.pdf" iconSrc="/cv.png" label="CV / Resume" />
           </div>
         </div>
 
@@ -98,31 +98,33 @@ export default function Home() {
         </div>
 
         {/* Live Text Analysis */}
-        <div className="p-4 md:p-6 overflow-hidden bg-offWhite">
+        <div className="p-4 md:p-6 bg-offWhite flex flex-col">
           <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-4 border-b-2 border-dark pb-2">
             Royal Decree: Text Analysis
           </h3>
-          <div className="w-full aspect-square md:aspect-video border-2 border-dark bg-bgWhite shadow-brutal-sm mb-4">
+          <div className="w-full aspect-square md:aspect-video border-2 border-dark bg-bgWhite shadow-brutal-sm mb-6">
             <iframe 
               src="https://t0kii-tamasriberts.hf.space" 
               className="w-full h-full border-0"
               title="Gradio Text Analysis"
             ></iframe>
           </div>
-          <div className="mb-4">
+          
+          <div className="w-full h-87.5 mb-6">
             <Slider slides={textAnalysisSlides} />
           </div>
-          <p className="text-sm font-bold border-l-4 border-dark pl-4">
+          
+          <p className="text-sm font-bold border-l-4 border-dark pl-4 mt-4">
             Leverages a fine-tuned MASRIBERTv3 model to execute multi-task emotion, sentiment, and sarcasm detection on Egyptian Arabic text.
           </p>
         </div>
 
         {/* Voice Pipeline */}
-        <div className="p-4 md:p-6 bg-beige overflow-hidden h-full">
+        <div className="p-4 md:p-6 bg-beige flex flex-col h-full">
           <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-4 border-b-2 border-dark pb-2">
             Royal Decree: Voice Pipeline
           </h3>
-          <div className="w-full aspect-video border-2 border-dark bg-bgWhite shadow-brutal-sm mb-4 relative">
+          <div className="w-full aspect-video border-2 border-dark bg-bgWhite shadow-brutal-sm mb-6 relative">
              <iframe 
                 className="absolute top-0 left-0 w-full h-full"
                 src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -131,10 +133,12 @@ export default function Home() {
                 allowFullScreen>
               </iframe>
           </div>
-          <div className="mb-4">
+          
+          <div className="w-full h-87.5 mb-6">
             <Slider slides={voicePipelineSlides} />
           </div>
-          <p className="text-sm font-bold border-l-4 border-dark pl-4">
+
+          <p className="text-sm font-bold border-l-4 border-dark pl-4 mt-4">
             Ultra-low-latency WebRTC pipeline integrating LiveKit's infrastructure with Pipecat orchestration for real-time STT to LLM to TTS processing.
           </p>
         </div>
