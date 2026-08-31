@@ -13,12 +13,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* The Master Archive Frame */}
         <div className="max-w-6xl mx-auto w-full border-2 border-dark shadow-brutal bg-bgWhite flex flex-col">
           
-          {/* Top Banner Cover Photo - Mobile Responsive */}
+          {/* Top Banner Cover Photo */}
           <div className="h-32 md:h-64 w-full border-b-2 border-dark bg-beige relative overflow-hidden shrink-0">
-             {/* Working Placeholder Image */}
              <img 
-               src="https://placehold.co/1200x300/F0EFEB/4A3728?text=REPLACE+WITH+BANNER" 
-               alt="Archive Banner Placeholder" 
+               src="/cover.png" 
+               alt="Archive Banner" 
                className="w-full h-full object-cover" 
              />
              <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
@@ -28,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
              </div>
           </div>
 
-          {/* Grid Navigation (Stacks into 2x2 grid on mobile) */}
+          {/* Grid Navigation */}
           <nav className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-dark text-center font-space font-bold uppercase text-xs md:text-sm bg-bgWhite">
             <Link href="/" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 border-r-2 md:border-r-2 border-dark">The Hub</Link>
             <Link href="/about" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 md:border-r-2 border-dark">Diary / About</Link>

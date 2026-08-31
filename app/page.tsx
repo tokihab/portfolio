@@ -1,29 +1,58 @@
 import React from 'react';
 import Slider from './components/slider';
 
-const RetroButton = ({ href, children }: { href: string, children: React.ReactNode }) => (
+// New 3D Square Button Component
+const RetroSquareButton = ({ href, label, icon }: { href: string, label: string, icon: string }) => (
   <a 
     href={href} 
     target="_blank" 
     rel="noopener noreferrer"
-    className="block w-full text-center bg-beige border-2 border-t-bgWhite border-l-bgWhite border-b-dark border-r-dark px-2 py-2 font-space uppercase text-sm font-bold text-dark active:border-t-dark active:border-l-dark active:border-b-bgWhite active:border-r-bgWhite active:translate-y-px"
+    className="flex flex-col items-center justify-center aspect-square bg-beige border-2 border-t-bgWhite border-l-bgWhite border-b-dark border-r-dark p-2 font-space uppercase text-xs font-bold text-dark hover:bg-offWhite active:border-t-dark active:border-l-dark active:border-b-bgWhite active:border-r-bgWhite active:translate-y-0.5 transition-all"
   >
-    {children}
+    <span className="text-2xl mb-1">{icon}</span>
+    <span>{label}</span>
   </a>
 );
 
 export default function Home() {
-  // Working Placeholders for the PDF Slider
   const textAnalysisSlides = ["https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+1", "https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+2"];
   const voicePipelineSlides = ["https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+1", "https://placehold.co/600x400/FCFCFA/4A3728?text=SLIDE+2"];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[240px_1fr_220px] divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-dark">
+    <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-dark">
       
       {/* ================= LEFT COLUMN ================= */}
       <aside className="bg-bgWhite flex flex-col divide-y-2 divide-dark order-2 lg:order-1">
         
-        {/* Clickable Retro Calendar -> Leads to Calendly */}
+        {/* 1. Link Grid (4 Squares) */}
+        <div className="p-4 bg-offWhite text-center">
+          <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm">Link Me:</h3>
+          <div className="grid grid-cols-2 gap-3">
+            <RetroSquareButton href="https://calendly.com/tony0100512-cs" icon="📅" label="Book" />
+            <RetroSquareButton href="https://github.com/tokihab" icon="💻" label="GitHub" />
+            <RetroSquareButton href="https://www.linkedin.com/in/toni-ihab/" icon="🔗" label="LinkedIn" />
+            <RetroSquareButton href="/cv.pdf" icon="📄" label="CV" />
+          </div>
+        </div>
+
+        {/* 2. Profile Image & Audit Info */}
+        <div className="p-4 text-center bg-beige">
+          <h3 className="font-space font-bold uppercase mb-3 text-sm border-b-2 border-dark pb-1">Toni (Me)</h3>
+          <div className="border-2 border-dark bg-bgWhite mb-4 shadow-[4px_4px_0px_#4A3728] p-1">
+            <img 
+              src="/pp.png" 
+              alt="Toni Ihab" 
+              className="w-full h-auto object-cover" 
+            />
+          </div>
+          <div className="text-xs font-mono font-bold text-left space-y-1 bg-offWhite border-2 border-dark p-2">
+            <p>NAME: Toni Ihab</p>
+            <p>LOC: Roxy, Heliopolis[cite: 2]</p>
+            <p>CITY: Cairo, Egypt</p>
+          </div>
+        </div>
+
+        {/* 3. Clickable Retro Calendar */}
         <a href="https://calendly.com/tony0100512-cs" target="_blank" className="block p-3 bg-offWhite hover:bg-beige transition-colors cursor-pointer group">
           <div className="text-center font-space font-bold border-b-2 border-dark pb-1 mb-2 group-hover:text-blue-700">08 / 2026 (Book Call)</div>
           <div className="grid grid-cols-7 text-xs text-center font-mono font-bold gap-1 mb-1 bg-dark text-beige py-1">
@@ -39,17 +68,25 @@ export default function Home() {
           </div>
         </a>
 
-        {/* Link Me (Retro Buttons) */}
-        <div className="p-4 space-y-3 bg-beige text-center h-full">
-          <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm">Link Me:</h3>
-          <RetroButton href="https://calendly.com/tony0100512-cs">Calendly</RetroButton>
-          <RetroButton href="https://github.com/tokihab">GitHub</RetroButton>
-          <RetroButton href="https://www.linkedin.com/in/toni-ihab/">LinkedIn</RetroButton>
-          <RetroButton href="/cv.pdf">CV / Resume</RetroButton>
+        {/* 4. Status/Changelog */}
+        <div className="p-4 bg-beige text-xs font-mono font-bold space-y-3 h-full">
+          <h3 className="font-space uppercase border-b-2 border-dark pb-1 mb-2 text-sm">Status Log:</h3>
+          <p className="flex items-start gap-2">
+            <span className="shrink-0 text-lg leading-none">▤</span> 
+            Deploying MASRISENSE.
+          </p>
+          <p className="flex items-start gap-2">
+            <span className="shrink-0 text-lg leading-none">▤</span> 
+            Building real-time WebRTC agents.
+          </p>
+          <p className="flex items-start gap-2">
+            <span className="shrink-0 text-lg leading-none">▤</span> 
+            Completing FlyRank internship portfolio.
+          </p>
         </div>
       </aside>
 
-      {/* ================= CENTER COLUMN (MAIN FEED) ================= */}
+      {/* ================= RIGHT COLUMN (MAIN FEED) ================= */}
       <section className="bg-offWhite flex flex-col divide-y-2 divide-dark order-1 lg:order-2">
         
         {/* Intro Section */}
@@ -61,7 +98,7 @@ export default function Home() {
         </div>
 
         {/* Live Text Analysis */}
-        <div className="p-4 md:p-6 overflow-hidden">
+        <div className="p-4 md:p-6 overflow-hidden bg-offWhite">
           <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-4 border-b-2 border-dark pb-2">
             Royal Decree: Text Analysis
           </h3>
@@ -81,7 +118,7 @@ export default function Home() {
         </div>
 
         {/* Voice Pipeline */}
-        <div className="p-4 md:p-6 bg-beige overflow-hidden">
+        <div className="p-4 md:p-6 bg-beige overflow-hidden h-full">
           <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-4 border-b-2 border-dark pb-2">
             Royal Decree: Voice Pipeline
           </h3>
@@ -102,47 +139,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
-      {/* ================= RIGHT COLUMN ================= */}
-      <aside className="bg-bgWhite flex flex-col divide-y-2 divide-dark order-3 lg:order-3">
-        
-        {/* Profile Image */}
-        <div className="p-4 text-center">
-          <h3 className="font-space font-bold uppercase mb-3 text-sm border-b-2 border-dark pb-1">Toni (Me)</h3>
-          
-          <div className="border-2 border-dark bg-beige mb-4 shadow-[4px_4px_0px_#4A3728] p-1">
-            {/* Working Profile Placeholder */}
-            <img 
-              src="https://placehold.co/300x350/FCFCFA/4A3728?text=PROFILE+PIC" 
-              alt="Toni Ihab Placeholder" 
-              className="w-full h-auto object-cover" 
-            />
-          </div>
-          
-          <div className="text-xs font-mono font-bold text-left space-y-1 bg-offWhite border-2 border-dark p-2">
-            <p>NAME: Toni Ihab</p>
-            <p>LOC: Roxy, Heliopolis[cite: 2]</p>
-            <p>CITY: Cairo, Egypt</p>
-          </div>
-        </div>
-
-        {/* What am I doing? */}
-        <div className="p-4 bg-beige text-xs font-mono font-bold space-y-3 h-full">
-          <h3 className="font-space uppercase border-b-2 border-dark pb-1 mb-2 text-sm">Status Log:</h3>
-          <p className="flex items-start gap-2">
-            <span className="shrink-0 text-lg leading-none">▤</span> 
-            Deploying MASRISENSE.
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="shrink-0 text-lg leading-none">▤</span> 
-            Building real-time WebRTC agents.
-          </p>
-          <p className="flex items-start gap-2">
-            <span className="shrink-0 text-lg leading-none">▤</span> 
-            Completing FlyRank internship portfolio.
-          </p>
-        </div>
-      </aside>
 
     </div>
   );
