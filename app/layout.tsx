@@ -8,37 +8,40 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mon
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-bgWhite text-dark font-mono antialiased flex flex-col min-h-screen">
-        {/* Simple Navigation */}
-        <nav className="p-6 bg-bgWhite sticky top-0 z-50 border-b-2 border-dark">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <Link href="/" className="font-space font-bold text-2xl tracking-tighter">
-              [TI] <span className="text-lg font-mono font-normal ml-2">toni_ihab</span>
-            </Link>
-            <div className="space-x-8 text-sm font-bold font-space uppercase">
-              <Link href="/about" className="hover:underline underline-offset-4 decoration-2">/about</Link>
-              <Link href="/projects" className="hover:underline underline-offset-4 decoration-2">/projects</Link>
-              <Link href="/contact" className="hover:underline underline-offset-4 decoration-2">/contact</Link>
-            </div>
-          </div>
-        </nav>
+      <body className="bg-bgWhite text-dark font-mono antialiased min-h-screen p-2 md:p-8">
         
-        {/* Main Content */}
-        <main className="max-w-6xl mx-auto p-6 flex-grow w-full">
-          {children}
-        </main>
-
-        {/* Brutalist Footer */}
-        <footer className="border-t-2 border-dark bg-beige p-6 mt-12">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-bold text-sm uppercase">
-            <p>SYSTEM.STATUS: ONLINE</p>
-            <div className="space-x-6">
-              <a href="mailto:tony0100512@cs.bnu.edu.eg" className="hover:bg-dark hover:text-offWhite px-2 py-1 transition-colors">EMAIL</a>
-              <a href="https://github.com/tokihab" target="_blank" className="hover:bg-dark hover:text-offWhite px-2 py-1 transition-colors">GITHUB</a>
-              <a href="https://www.linkedin.com/in/toni-ihab/" target="_blank" className="hover:bg-dark hover:text-offWhite px-2 py-1 transition-colors">LINKEDIN</a>
-            </div>
+        {/* The Master Archive Frame */}
+        <div className="max-w-6xl mx-auto w-full border-2 border-dark shadow-brutal bg-bgWhite flex flex-col">
+          
+          {/* Top Banner Cover Photo - Mobile Responsive */}
+          <div className="h-32 md:h-64 w-full border-b-2 border-dark bg-beige relative overflow-hidden shrink-0">
+             {/* Working Placeholder Image */}
+             <img 
+               src="https://placehold.co/1200x300/F0EFEB/4A3728?text=REPLACE+WITH+BANNER" 
+               alt="Archive Banner Placeholder" 
+               className="w-full h-full object-cover" 
+             />
+             <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+                <h1 className="text-4xl md:text-8xl font-space font-extrabold text-bgWhite drop-shadow-[4px_4px_0px_#4A3728] uppercase tracking-tighter">
+                  Toni Ihab
+                </h1>
+             </div>
           </div>
-        </footer>
+
+          {/* Grid Navigation (Stacks into 2x2 grid on mobile) */}
+          <nav className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-dark text-center font-space font-bold uppercase text-xs md:text-sm bg-bgWhite">
+            <Link href="/" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 border-r-2 md:border-r-2 border-dark">The Hub</Link>
+            <Link href="/about" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 md:border-r-2 border-dark">Diary / About</Link>
+            <Link href="/projects" className="py-3 hover:bg-beige transition-colors border-r-2 md:border-r-2 border-dark">Project Log</Link>
+            <Link href="/contact" className="py-3 hover:bg-beige transition-colors">Comms</Link>
+          </nav>
+          
+          {/* Main Content */}
+          <main className="w-full grow overflow-x-hidden">
+            {children}
+          </main>
+
+        </div>
       </body>
     </html>
   );
