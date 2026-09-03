@@ -5,41 +5,110 @@ import './globals.css';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
+// Vintage OS Icon Component
+const DesktopIcon = ({ href, iconSrc, label }: { href: string, iconSrc: string, label: string }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group cursor-pointer">
+    <div className="w-14 h-14 bg-beige border-2 border-t-bgWhite border-l-bgWhite border-r-dark border-b-dark p-2 group-active:border-t-dark group-active:border-l-dark group-active:border-r-bgWhite group-active:border-b-bgWhite transition-all">
+      <img src={iconSrc} alt={label} className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all" />
+    </div>
+    <span className="text-[10px] font-mono font-bold bg-transparent px-1 border border-transparent group-hover:bg-dark group-hover:text-beige group-hover:border-dark transition-all">
+      {label}
+    </span>
+  </a>
+);
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-bgWhite text-dark font-mono antialiased min-h-screen p-2 md:p-8">
+      <body className="bg-beige text-dark font-mono antialiased min-h-screen p-4 md:p-8 selection:bg-dark selection:text-beige">
         
-        {/* The Master Archive Frame */}
-        <div className="max-w-6xl mx-auto w-full border-2 border-dark shadow-brutal bg-bgWhite flex flex-col">
+        <div className="max-w-6xl mx-auto flex flex-col gap-6">
           
-          {/* Top Banner Cover Photo */}
-          <div className="h-32 md:h-64 w-full border-b-2 border-dark bg-beige relative overflow-hidden shrink-0">
-             <img 
-               src="/cover.png" 
-               alt="Archive Banner" 
-               className="w-full h-full object-cover" 
-             />
-             <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
-                <h1 className="text-4xl md:text-8xl font-space font-extrabold text-bgWhite drop-shadow-[4px_4px_0px_#4A3728] uppercase tracking-tighter">
-                  Toni Ihab
-                </h1>
+          {/* HEADER - Floating Box with Folder Tabs */}
+          <header className="sticky top-4 z-50 flex flex-col shadow-brutal border-2 border-dark bg-bgWhite">
+             {/* Banner */}
+             <div className="h-32 md:h-48 w-full border-b-2 border-dark bg-beige relative overflow-hidden">
+                <img src="/cover.png" alt="Cover" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+                  <h1 className="text-4xl md:text-7xl font-space font-extrabold text-bgWhite drop-shadow-[4px_4px_0px_#4A3728] uppercase tracking-tighter">
+                    Toni Ihab
+                  </h1>
+                </div>
              </div>
+
+             {/* Folder Tabs Navigation */}
+             <nav className="flex flex-wrap items-end px-4 pt-4 gap-2 bg-offWhite border-b-2 border-dark">
+               <Link href="/" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">The Hub</Link>
+               <Link href="/about" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Diary / About</Link>
+               <Link href="/projects" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Project Log</Link>
+               <Link href="/contact" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Comms</Link>
+             </nav>
+             
+             {/* Smooth Scroll Fade Mask */}
+             <div className="absolute -bottom-10 left-0 w-full h-10 bg-gradient-to-b from-beige to-transparent pointer-events-none"></div>
+          </header>
+
+          {/* 2-COLUMN GRID (Gaps between floating widgets) */}
+          <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 items-start relative z-10">
+            
+            {/* LEFT SIDEBAR - 4 Separated Floating Boxes */}
+            <aside className="flex flex-col gap-5 order-2 lg:order-1">
+              
+              {/* Box 1: Vintage OS Links */}
+              <div className="bg-bgWhite border-2 border-dark shadow-brutal p-4">
+                <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm text-center">Link Me</h3>
+                <div className="flex justify-around items-start">
+                  <DesktopIcon href="https://github.com/tokihab" iconSrc="/github.png" label="github.exe" />
+                  <DesktopIcon href="https://www.linkedin.com/in/toni-ihab/" iconSrc="/linkedin.png" label="linkedin.lnk" />
+                  <DesktopIcon href="/cv.pdf" iconSrc="/cv.png" label="resume.pdf" />
+                </div>
+              </div>
+
+              {/* Box 2: Profile */}
+              <div className="bg-bgWhite border-2 border-dark shadow-brutal p-4 text-center">
+                <h3 className="font-space font-bold uppercase mb-3 text-sm border-b-2 border-dark pb-1">Toni (Me)</h3>
+                <div className="border-2 border-dark bg-beige mb-4 p-1">
+                  <img src="/pp.png" alt="Toni Ihab" className="w-full h-auto object-cover" />
+                </div>
+                <div className="text-xs font-mono font-bold text-left space-y-1 bg-offWhite border-2 border-dark p-2">
+                  <p>NAME: Toni Ihab</p>
+                  <p>LOC: Roxy, Heliopolis</p>
+                  <p>CITY: Cairo, Egypt</p>
+                </div>
+              </div>
+
+              {/* Box 3: Calendar */}
+              <a href="https://calendly.com/tony0100512-cs" target="_blank" rel="noopener noreferrer" className="block bg-bgWhite border-2 border-dark shadow-brutal p-3 hover:bg-beige transition-colors cursor-pointer group">
+                <div className="text-center font-space font-bold border-b-2 border-dark pb-1 mb-2 group-hover:text-blue-700">08 / 2026 (Book Call)</div>
+                <div className="grid grid-cols-7 text-xs text-center font-mono font-bold gap-1 mb-1 bg-dark text-beige py-1">
+                  <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                </div>
+                <div className="grid grid-cols-7 text-[10px] sm:text-xs text-center font-mono gap-y-2 py-1">
+                  <span className="text-gray-400">26</span><span className="text-gray-400">27</span><span className="text-gray-400">28</span><span className="text-gray-400">29</span><span className="text-gray-400">30</span><span className="text-gray-400">31</span><span>1</span>
+                  <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                  <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                  <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+                  <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span>
+                  <span>30</span><span className="bg-dark text-beige font-bold">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+              </a>
+
+              {/* Box 4: Status Log */}
+              <div className="bg-bgWhite border-2 border-dark shadow-brutal p-4 text-xs font-mono font-bold space-y-3">
+                <h3 className="font-space uppercase border-b-2 border-dark pb-1 mb-2 text-sm">Status Log:</h3>
+                <p className="flex items-start gap-2"><span className="shrink-0 text-lg leading-none">▤</span> Deploying MASRISENSE.</p>
+                <p className="flex items-start gap-2"><span className="shrink-0 text-lg leading-none">▤</span> Building real-time WebRTC agents.</p>
+                <p className="flex items-start gap-2"><span className="shrink-0 text-lg leading-none">▤</span> Completing FlyRank internship portfolio.</p>
+              </div>
+
+            </aside>
+
+            {/* RIGHT CONTENT FEED (Floating Block) */}
+            <main className="bg-bgWhite border-2 border-dark shadow-brutal order-1 lg:order-2 min-h-[800px] flex flex-col">
+              {children}
+            </main>
+
           </div>
-
-          {/* Grid Navigation */}
-          <nav className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-dark text-center font-space font-bold uppercase text-xs md:text-sm bg-bgWhite">
-            <Link href="/" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 border-r-2 md:border-r-2 border-dark">The Hub</Link>
-            <Link href="/about" className="py-3 hover:bg-beige transition-colors border-b-2 md:border-b-0 md:border-r-2 border-dark">Diary / About</Link>
-            <Link href="/projects" className="py-3 hover:bg-beige transition-colors border-r-2 md:border-r-2 border-dark">Project Log</Link>
-            <Link href="/contact" className="py-3 hover:bg-beige transition-colors">Comms</Link>
-          </nav>
-          
-          {/* Main Content */}
-          <main className="w-full grow overflow-x-hidden">
-            {children}
-          </main>
-
         </div>
       </body>
     </html>
