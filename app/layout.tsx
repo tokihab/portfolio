@@ -5,7 +5,6 @@ import './globals.css';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
-// Vintage OS Icon Component
 const DesktopIcon = ({ href, iconSrc, label }: { href: string, iconSrc: string, label: string }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group cursor-pointer">
     <div className="w-14 h-14 bg-beige border-2 border-t-bgWhite border-l-bgWhite border-r-dark border-b-dark p-2 group-active:border-t-dark group-active:border-l-dark group-active:border-r-bgWhite group-active:border-b-bgWhite transition-all">
@@ -20,35 +19,38 @@ const DesktopIcon = ({ href, iconSrc, label }: { href: string, iconSrc: string, 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-beige text-dark font-mono antialiased min-h-screen p-4 md:p-8 selection:bg-dark selection:text-beige">
+      <body className="bg-beige text-dark font-mono antialiased min-h-screen selection:bg-dark selection:text-beige">
         
-        <div className="max-w-6xl mx-auto flex flex-col gap-6">
-          
-          {/* HEADER - Floating Box with Folder Tabs */}
-          <header className="sticky top-4 z-50 flex flex-col shadow-brutal border-2 border-dark bg-bgWhite">
-             {/* Banner */}
-             <div className="h-32 md:h-48 w-full border-b-2 border-dark bg-beige relative overflow-hidden">
-                <img src="/cover.png" alt="Cover" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
+        {/* SOLID STICKY MASK: w-full and bg-beige ensures absolutely nothing peeks through the top */}
+        <div className="sticky top-0 z-50 bg-beige w-full pt-4 md:pt-8 pb-6">
+          <div className="max-w-6xl mx-auto flex flex-col px-4 md:px-8">
+            
+            {/* HABBO FOLDER TABS: Using mt-2 and pt-2 that invert on hover to prevent layout shifts! */}
+            <nav className="flex flex-wrap items-end px-6 gap-2 relative z-10 -mb-1">
+              <Link href="/" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">The Hub</Link>
+              <Link href="/about" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Diary / About</Link>
+              <Link href="/projects" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Project Log</Link>
+              <Link href="/contact" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Comms</Link>
+            </nav>
+
+            {/* BANNER: Thick 4px dark brown border frames the image and fuses with the tabs above */}
+            <div className="h-32 md:h-48 w-full border-4 border-dark bg-beige relative overflow-hidden z-0">
+               {/* Added object-top here to force the crop to the top half */}
+               <img src="/cover.png" alt="Cover" className="w-full h-full object-cover object-top" />
+               <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
                   <h1 className="text-4xl md:text-7xl font-space font-extrabold text-bgWhite drop-shadow-[4px_4px_0px_#4A3728] uppercase tracking-tighter">
                     Toni Ihab
                   </h1>
-                </div>
-             </div>
+               </div>
+            </div>
 
-             {/* Folder Tabs Navigation */}
-             <nav className="flex flex-wrap items-end px-4 pt-4 gap-2 bg-offWhite border-b-2 border-dark">
-               <Link href="/" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">The Hub</Link>
-               <Link href="/about" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Diary / About</Link>
-               <Link href="/projects" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Project Log</Link>
-               <Link href="/contact" className="px-4 py-2 bg-bgWhite border-2 border-b-0 border-dark rounded-t-xl font-space font-bold uppercase text-xs md:text-sm hover:bg-beige transition-colors mt-2">Comms</Link>
-             </nav>
-             
-             {/* Smooth Scroll Fade Mask */}
-             <div className="absolute -bottom-10 left-0 w-full h-10 bg-gradient-to-b from-beige to-transparent pointer-events-none"></div>
-          </header>
+          </div>
+        </div>
 
-          {/* 2-COLUMN GRID (Gaps between floating widgets) */}
+        {/* MAIN CONTENT WRAPPER */}
+        <div className="max-w-6xl mx-auto px-4 md:px-8 pb-12 flex flex-col gap-6">
+          
+          {/* 2-COLUMN FLOATING WIDGET GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 items-start relative z-10">
             
             {/* LEFT SIDEBAR - 4 Separated Floating Boxes */}
@@ -104,12 +106,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </aside>
 
             {/* RIGHT CONTENT FEED (Floating Block) */}
-            <main className="bg-bgWhite border-2 border-dark shadow-brutal order-1 lg:order-2 min-h-[800px] flex flex-col">
+            <main className="bg-bgWhite border-2 border-dark shadow-brutal order-1 lg:order-2 min-h-200 flex flex-col overflow-hidden">
               {children}
             </main>
 
           </div>
         </div>
+
       </body>
     </html>
   );

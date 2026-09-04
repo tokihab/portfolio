@@ -13,7 +13,7 @@ export default function Slider({ slides }: { slides: string[] }) {
     <div className="relative w-full h-full border-2 border-dark bg-beige flex flex-col overflow-hidden group">
       
       {/* Image Container */}
-      <div className="relative flex-grow h-[250px] md:h-[400px] bg-beige w-full overflow-hidden p-2">
+      <div className="relative grow h-62.5 md:h-100 bg-beige w-full overflow-hidden p-2">
         <AnimatePresence mode="wait">
           <motion.img
             key={currentIndex}
