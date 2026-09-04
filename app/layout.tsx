@@ -27,10 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             
             {/* HABBO FOLDER TABS: Using mt-2 and pt-2 that invert on hover to prevent layout shifts! */}
             <nav className="flex flex-wrap items-end px-6 gap-2 relative z-10 -mb-1">
-              <Link href="/" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">The Hub</Link>
-              <Link href="/about" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Diary / About</Link>
-              <Link href="/projects" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Project Log</Link>
-              <Link href="/contact" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Comms</Link>
+              <Link href="/" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">highlight</Link>
+              <Link href="/about" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Diary</Link>
+              <Link href="/projects" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Toys</Link>
+              <Link href="/contact" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Hire me pls</Link>
             </nav>
 
             {/* BANNER: Thick 4px dark brown border frames the image and fuses with the tabs above */}
