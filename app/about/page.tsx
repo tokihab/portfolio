@@ -55,7 +55,7 @@ export default function About() {
         {/* 2. Bottom Mechanical Draggable Slider */}
         <div className="relative w-full h-16 flex items-center">
           
-          {/* Dark Track Line (Mathematically connects the center of the first and last tick) */}
+          {/* Dark Track Line */}
           <div className="absolute left-[16.66%] right-[16.66%] h-[6px] bg-dark z-0 rounded-full"></div>
 
           {/* Ticks & Draggable Knob Container */}
@@ -181,8 +181,20 @@ export default function About() {
 
                 {/* Course: DevOps */}
                 <div className="bg-bgWhite border-2 border-dark p-4 shadow-[4px_4px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#4A3728] transition-all">
-                  <h4 className="font-bold font-space text-lg">DevOps</h4>
-                  <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">Digital Egypt Pioneers Initiative | 2025 | YAT, Ard El-Golf</p>
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <h4 className="font-bold font-space text-lg">DevOps</h4>
+                      <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">Digital Egypt Pioneers Initiative | 2025 | YAT, Ard El-Golf</p>
+                    </div>
+                    <a 
+                      href="https://github.com/tokihab/Automated-E-Commerce-Deployment-Platform" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-[10px] md:text-xs shadow-[2px_2px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all shrink-0"
+                    >
+                      View_Repo.exe
+                    </a>
+                  </div>
                   <ul className="text-sm font-medium list-disc list-inside space-y-1">
                     <li>Automated infrastructure provisioning and containerized <span className="font-bold">E-commerce migration</span>, improving deployment speed.</li>
                     <li>Accomplished this after learning the following: Ansible, Terraform, AWS, Docker, Kubernetes, Jenkins, CI/CD, Prometheus and Grafana.</li>
@@ -192,7 +204,7 @@ export default function About() {
                 {/* Course: Cloud Architecture */}
                 <div className="bg-bgWhite border-2 border-dark p-4 shadow-[4px_4px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#4A3728] transition-all">
                   <h4 className="font-bold font-space text-lg">Cloud Architecture</h4>
-                  <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">AWS / National Telecom Institute | 2024 ! Creatvia Salah-Salem</p>
+                  <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">AWS / National Telecom Institute | 2024 | Creatvia Salah-Salem</p>
                   <ul className="text-sm font-medium list-disc list-inside space-y-1">
                     <li>Compute, Storage, Databases, Networking, Security, Auto Scaling, Load Balancing.</li>
                     <li><span className="font-bold">Applied these technologies</span> on a Coffee Shop's web app inside AWS sandbox during the courses period.</li>
@@ -201,8 +213,20 @@ export default function About() {
 
                 {/* Course: Software Testing */}
                 <div className="bg-bgWhite border-2 border-dark p-4 shadow-[4px_4px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#4A3728] transition-all">
-                  <h4 className="font-bold font-space text-lg">Software Testing</h4>
-                  <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">Digital Egypt Pioneers Initiative | 2023 | WE, Nasr City</p>
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <h4 className="font-bold font-space text-lg">Software Testing</h4>
+                      <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">Digital Egypt Pioneers Initiative | 2023 | WE, Nasr City</p>
+                    </div>
+                    <a 
+                      href="https://github.com/tokihab/E-CommerceAutoQA" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-[10px] md:text-xs shadow-[2px_2px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all shrink-0"
+                    >
+                      View_Repo.exe
+                    </a>
+                  </div>
                   <ul className="text-sm font-medium list-disc list-inside space-y-1">
                     <li><span className="font-bold">Applied ISTQB methodologies</span> we learnt to manage the full testing lifecycle of an <span className="font-bold">E-commerce platform</span>.</li>
                     <li>Engineered testing suites transitioning from manual A/B testing exploratory sessions to Data-Driven and REST API testing, utilizing Selenium and Java's TestNG to validate complex back-end service layers and data integrity.</li>
