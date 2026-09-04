@@ -24,7 +24,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const handleHireClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    setShakeKey(prev => prev + 1);
+    const calendarEl = document.getElementById('calendar-widget');
+    if (calendarEl) {
+      calendarEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Trigger the shake animation slightly after scrolling starts so it lands on the calendar
+      setTimeout(() => {
+        setShakeKey(prev => prev + 1);
+      }, 350);
+    }
   };
 
   return (
@@ -61,12 +68,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* 2-COLUMN FLOATING WIDGET GRID */}
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 items-start relative z-10">
             
-            {/* LEFT SIDEBAR - Responsive 2-column layout on medium viewports to prevent single stretched columns */}
+            {/* LEFT SIDEBAR */}
             <aside className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-5 order-2 lg:order-1">
               
-              {/* "Hire me pls" button that shakes the calendar instead of navigating */}
+              {/* "Hire me pls" button that scrolls to and shakes the calendar */}
               <a 
-                href="#calendar" 
+                href="#calendar-widget" 
                 onClick={handleHireClick}
                 className="w-full py-3 px-4 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-center text-sm shadow-brutal hover:bg-[#5a4331] transition-all sm:col-span-2 lg:col-span-1 cursor-pointer"
               >
@@ -97,8 +104,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
               </div>
 
-              {/* Box 3: Calendar with animated shake trigger */}
+              {/* Box 3: Calendar with ID and animated shake trigger */}
               <motion.div
+                id="calendar-widget"
                 key={shakeKey}
                 animate={{ x: shakeKey > 0 ? [0, -8, 8, -8, 8, -4, 4, 0] : 0 }}
                 transition={{ duration: 0.4 }}
