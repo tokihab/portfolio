@@ -22,7 +22,6 @@ interface Category {
   projects: Project[];
 }
 
-// Organized Project Data mapped to your public folder assets
 const categories: Category[] = [
   {
     id: 'ai',
@@ -34,7 +33,8 @@ const categories: Category[] = [
         subtitle: 'Medical Image Captioning',
         year: '2025',
         description: 'A Generative AI pipeline designed to automatically generate accurate medical captions for lung X-rays.',
-        image: '/xrays.jpg',
+        image: '/covers/xrays.jpg',
+        bookmarkImage: '/covers/xraysbookmark.jpg',
         link: 'https://huggingface.co/spaces/T0KII/Gen-AI-Captioning-Lungs-Xrays', 
         linkText: 'Run_Model.exe',
       },
@@ -44,7 +44,8 @@ const categories: Category[] = [
         subtitle: 'Egyptian Dialect Text Analysis',
         year: '2026',
         description: 'Leverages a fine-tuned MASRIBERTv4 model and Egyptian Arabic Fasttext Vectors to execute multi-task sentiment and sarcasm detection.',
-        image: '/masrisense.png', 
+        image: '/covers/masrisense.png', 
+        bookmarkImage: '/covers/masrisensebookmark.jpg',
         link: 'https://t0kii-tamasriberts.hf.space',
         linkText: 'Run_Model.exe',
       },
@@ -54,8 +55,8 @@ const categories: Category[] = [
         subtitle: 'Siamese Neural Network',
         year: '2026',
         description: 'A deep learning web application utilizing a Keras Siamese CNN and Hugging Face infrastructure to compare handwriting signatures and flag forgeries.',
-        image: '/siamese.png',
-        bookmarkImage: '/siamesebookmark.png',
+        image: '/covers/siamese.png',
+        bookmarkImage: '/covers/siamesebookmark.png',
         link: 'https://siamese-signature-similarity.streamlit.app/',
         linkText: 'Launch_App.exe',
         githubLink: 'https://github.com/tokihab/signature-similarity',
@@ -66,7 +67,8 @@ const categories: Category[] = [
         subtitle: 'CS Voice Agent',
         year: '2026',
         description: "Ultra-low-latency WebRTC pipeline integrating LiveKit's infrastructure with Pipecat orchestration for real-time STT to LLM to TTS processing.",
-        image: '/livecat.jpg', 
+        image: '/covers/livecat.jpg', 
+        bookmarkImage: '/covers/livecatbookmark.jpg',
         link: 'https://www.youtube.com/watch?v=XhfqIOjIs9w',
         linkText: 'Play_Video.exe',
       },
@@ -76,7 +78,8 @@ const categories: Category[] = [
         subtitle: 'NLP Sentiment Engine',
         year: '2025',
         description: 'An interactive Streamlit web application that analyzes user sentiment input to provide highly personalized movie recommendations.',
-        image: '/reccsys.jpg', 
+        image: '/covers/reccsys.jpg', 
+        bookmarkImage: '/covers/reccsysbookmark.jpg',
         link: 'https://movie-sentiment-recommendor.streamlit.app/',
         linkText: 'Launch_App.exe',
         githubLink: 'https://github.com/tokihab/movie-recommendor',
@@ -93,7 +96,8 @@ const categories: Category[] = [
         subtitle: 'Data Visualization',
         year: '2025',
         description: 'Comprehensive supply chain analytics and visualization. Watch the interactive dashboard walkthrough above to explore the data.',
-        image: '/supch.jpg',
+        image: '/covers/supch.jpg',
+        bookmarkImage: '/covers/supchbookmark.jpg',
         videoId: 'FR3fO4Qhd_A', 
         link: 'https://github.com/tokihab/SupplyChainAnalysis',
         linkText: 'View_Repo.exe',
@@ -104,8 +108,8 @@ const categories: Category[] = [
         subtitle: 'Data Analysis',
         year: '2025',
         description: 'In-depth analysis of sustainable fashion trends, mapping supply chain metrics to environmental impact.',
-        image: '/susfash.jpg',
-        bookmarkImage: '/susfashbookmark.jpg',
+        image: '/covers/susfash.jpg',
+        bookmarkImage: '/covers/susfashbookmark.jpg',
         videoId: 'u8kylgOKwqE', 
         link: 'https://github.com/tokihab/Sustainable-Fashion-Analysis',
         linkText: 'View_Repo.exe',
@@ -122,8 +126,8 @@ const categories: Category[] = [
         subtitle: 'PHP+REACT+SQL+DOTNET',
         year: '2026',
         description: 'A full-stack application for tracking and ranking metrics, featuring an interactive UI and a robust data backend.',
-        image: '/tierlist.jpg',
-        bookmarkImage: '/tierlistbookmark.png',
+        image: '/covers/tierlist.jpg',
+        bookmarkImage: '/covers/tierlistbookmark.png',
         link: 'https://huggingface.co/spaces/T0KII/tierlists-webapp', 
         linkText: 'Launch_App.exe',
       },
@@ -133,8 +137,8 @@ const categories: Category[] = [
         subtitle: 'Game Development',
         year: '2024',
         description: 'The classic Pong game rebuilt and optimized with modern programming paradigms for BNU.',
-        image: '/pong.jpg',
-        bookmarkImage: '/pongbookmark.png',
+        image: '/covers/pong.jpg',
+        bookmarkImage: '/covers/pongbookmark.png',
         link: 'https://github.com/tokihab/PONG-BNU',
         linkText: 'View_Repo.exe',
       },
@@ -144,8 +148,8 @@ const categories: Category[] = [
         subtitle: 'Image Processing',
         year: '2024',
         description: 'Mathematical image processing and computer vision scripts built entirely within the GNU Octave environment.',
-        image: '/GNU.png',
-        bookmarkImage: '/GNUbookmark.png',
+        image: '/covers/GNU.png',
+        bookmarkImage: '/covers/GNUbookmark.png',
         link: 'https://github.com/tokihab/image-processing-GNUoctave',
         linkText: 'View_Repo.exe',
       }
@@ -154,29 +158,41 @@ const categories: Category[] = [
 ];
 
 export default function Projects() {
-  const [openDrawer, setOpenDrawer] = useState<string>(categories[0].id);
-  const [activeProject, setActiveProject] = useState<Project>(categories[0].projects[0]);
+  const [openDrawers, setOpenDrawers] = useState<string[]>([]);
+  const [activeProjects, setActiveProjects] = useState<Record<string, Project | null>>({});
 
   const handleToggleDrawer = (categoryId: string) => {
-    if (openDrawer !== categoryId) {
-      setOpenDrawer(categoryId);
-      const category = categories.find((c) => c.id === categoryId);
-      if (category) setActiveProject(category.projects[0]);
-    }
+    setOpenDrawers(prev => {
+      const isOpen = prev.includes(categoryId);
+      if (isOpen) {
+        setActiveProjects(ap => ({ ...ap, [categoryId]: null }));
+        return prev.filter(id => id !== categoryId);
+      } else {
+        return [...prev, categoryId];
+      }
+    });
+  };
+
+  const handleSelectProject = (categoryId: string, project: Project) => {
+    setActiveProjects(prev => ({
+      ...prev,
+      [categoryId]: prev[categoryId]?.id === project.id ? null : project
+    }));
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="p-6 md:p-8 flex flex-col h-full bg-offWhite min-h-[800px]">
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="p-6 md:p-8 flex flex-col bg-offWhite w-full">
       
       {/* Header */}
       <h2 className="text-3xl font-space font-bold inline-block border-2 border-dark bg-dark text-beige px-6 py-2 shadow-brutal uppercase self-start mb-8">
         Project Archive
       </h2>
 
-      {/* ================= SLIDING DRAWERS ================= */}
-      <div className="flex flex-col gap-4 mb-10 w-full max-w-5xl mx-auto">
+      {/* ================= MULTI-OPEN SLIDING DRAWERS ================= */}
+      <div className="flex flex-col gap-4 w-full max-w-5xl mx-auto">
         {categories.map((category) => {
-          const isOpen = openDrawer === category.id;
+          const isOpen = openDrawers.includes(category.id);
+          const activeProject = activeProjects[category.id];
 
           return (
             <div key={category.id} className="border-2 border-dark bg-bgWhite shadow-brutal-sm flex flex-col overflow-hidden">
@@ -192,7 +208,7 @@ export default function Projects() {
                 <span className="font-mono text-xl">{isOpen ? '[-]' : '[+]'}</span>
               </button>
 
-              {/* Drawer Content (VHS Shelf) */}
+              {/* Drawer Content (VHS Shelf + Inline Details Card) */}
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
@@ -200,46 +216,51 @@ export default function Projects() {
                     animate={{ height: 'auto' }}
                     exit={{ height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden bg-beige border-t-2 border-dark"
+                    className="overflow-hidden bg-beige border-t-2 border-dark flex flex-col"
                   >
+                    {/* VHS Shelf */}
                     <div className="w-full flex items-center h-[300px] md:h-[400px] gap-2 md:gap-4 p-4 md:p-6 overflow-x-auto">
                       {category.projects.map((project) => {
-                        const isActive = activeProject.id === project.id;
+                        const isActive = activeProject?.id === project.id;
 
                         return (
                           <motion.div
                             layout
                             key={project.id}
-                            onClick={() => setActiveProject(project)}
+                            onClick={() => handleSelectProject(category.id, project)}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className={`relative h-full border-2 border-dark overflow-hidden shrink-0 flex flex-col transition-colors duration-300 ${
                               isActive 
-                                ? 'w-[240px] sm:w-[320px] md:w-[420px] bg-bgWhite shadow-[6px_6px_0px_#4A3728] cursor-default z-10' 
+                                ? 'w-[240px] sm:w-[320px] md:w-[420px] bg-bgWhite shadow-[6px_6px_0px_#4A3728] cursor-pointer z-10' 
                                 : 'w-10 sm:w-12 md:w-16 bg-dark hover:bg-[#5a4331] cursor-pointer z-0'
                             }`}
                           >
                             {isActive ? (
-                              // --- ACTIVE TAPE ---
+                              // --- ACTIVE TAPE WITH HEAVY PIXELATION & RETRO FILTER ---
                               <motion.div 
                                 initial={{ opacity: 0 }} 
                                 animate={{ opacity: 1 }} 
                                 transition={{ delay: 0.15 }}
-                                className="w-full h-full relative bg-dark"
+                                className="w-full h-full relative bg-dark overflow-hidden"
                               >
                                 {project.videoId ? (
                                   <iframe 
                                     title={project.title}
-                                    className="w-full h-full border-0 bg-dark pointer-events-auto filter sepia-[0.3] contrast-125 brightness-90"
+                                    className="w-full h-full border-0 bg-dark pointer-events-auto [image-rendering:pixelated] contrast-150 brightness-90 sepia-[0.4]"
                                     src={`https://www.youtube.com/embed/${project.videoId}?rel=0`}
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen={true}
                                   ></iframe>
                                 ) : (
-                                  <img 
-                                    src={project.image} 
-                                    alt={project.title} 
-                                    className="w-full h-full object-cover object-center filter sepia-[0.35] contrast-125 brightness-90 saturate-[0.85]"
-                                  />
+                                  <div className="w-full h-full relative">
+                                    <img 
+                                      src={project.image} 
+                                      alt={project.title} 
+                                      className="w-full h-full object-cover object-center [image-rendering:pixelated] contrast-150 brightness-90 sepia-[0.4] saturate-75 scale-105"
+                                    />
+                                    {/* Retro pixel overlay grid */}
+                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-60"></div>
+                                  </div>
                                 )}
                                 
                                 {/* Brutalist Badge */}
@@ -254,7 +275,7 @@ export default function Projects() {
                                   <img 
                                     src={project.bookmarkImage} 
                                     alt="" 
-                                    className="absolute inset-0 w-full h-full object-cover opacity-25 filter sepia contrast-150 pointer-events-none"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-20 filter sepia contrast-150 [image-rendering:pixelated] pointer-events-none"
                                   />
                                 )}
                                 <div className="w-6 h-6 border-2 border-beige flex items-center justify-center text-beige font-mono text-[10px] font-bold shrink-0 z-10 bg-dark/90">
@@ -273,69 +294,68 @@ export default function Projects() {
                         );
                       })}
                     </div>
+
+                    {/* ================= INLINE PROJECT DETAILS CARD (Renders right underneath this shelf) ================= */}
+                    <AnimatePresence>
+                      {activeProject && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="w-full bg-bgWhite border-t-2 border-dark p-6 text-center"
+                        >
+                          <h3 className="text-2xl md:text-3xl font-space font-extrabold uppercase text-dark tracking-tighter">
+                            {activeProject.title}
+                          </h3>
+                          
+                          <div className="flex items-center gap-3 mt-2 mb-4 justify-center">
+                            <span className="font-space font-bold uppercase text-xs md:text-sm tracking-widest text-gray-500">
+                              {activeProject.subtitle}
+                            </span>
+                            <span className="w-1.5 h-1.5 bg-dark rounded-full"></span>
+                            <span className="font-mono font-bold text-xs bg-dark text-beige px-2 py-0.5">
+                              {activeProject.year}
+                            </span>
+                          </div>
+
+                          <p className="font-medium text-sm md:text-base leading-relaxed text-dark max-w-xl mx-auto">
+                            {activeProject.description}
+                          </p>
+
+                          {/* Action Buttons */}
+                          <div className="mt-6 flex flex-wrap justify-center gap-4">
+                            {activeProject.link && (
+                              <a 
+                                href={activeProject.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="px-6 py-2 bg-beige border-2 border-dark font-space font-bold uppercase text-xs md:text-sm shadow-[3px_3px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all"
+                              >
+                                {activeProject.linkText}
+                              </a>
+                            )}
+
+                            {activeProject.githubLink && (
+                              <a 
+                                href={activeProject.githubLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="px-6 py-2 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-xs md:text-sm shadow-[3px_3px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all"
+                              >
+                                View_Repo.exe
+                              </a>
+                            )}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
           );
         })}
-      </div>
-
-      {/* ================= PROJECT DETAILS (Displays Active Project) ================= */}
-      <div className="mt-4 w-full max-w-2xl mx-auto text-center min-h-[180px] bg-bgWhite border-2 border-dark p-6 shadow-brutal">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeProject.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-col items-center"
-          >
-            <h3 className="text-2xl md:text-3xl font-space font-extrabold uppercase text-dark tracking-tighter">
-              {activeProject.title}
-            </h3>
-            
-            <div className="flex items-center gap-3 mt-2 mb-4">
-              <span className="font-space font-bold uppercase text-xs md:text-sm tracking-widest text-gray-500">
-                {activeProject.subtitle}
-              </span>
-              <span className="w-1.5 h-1.5 bg-dark rounded-full"></span>
-              <span className="font-mono font-bold text-xs bg-dark text-beige px-2 py-0.5">
-                {activeProject.year}
-              </span>
-            </div>
-
-            <p className="font-medium text-sm md:text-base leading-relaxed text-dark max-w-xl">
-              {activeProject.description}
-            </p>
-
-            {/* Action Buttons */}
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              {activeProject.link && (
-                <a 
-                  href={activeProject.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-2 bg-beige border-2 border-dark font-space font-bold uppercase text-xs md:text-sm shadow-[3px_3px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all"
-                >
-                  {activeProject.linkText}
-                </a>
-              )}
-
-              {activeProject.githubLink && (
-                <a 
-                  href={activeProject.githubLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="px-6 py-2 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-xs md:text-sm shadow-[3px_3px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all"
-                >
-                  View_Repo.exe
-                </a>
-              )}
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </div>
 
     </motion.div>

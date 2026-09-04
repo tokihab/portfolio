@@ -28,7 +28,7 @@ export default function Home() {
         </p>
       </div>
 
-      {/* 3. HIGHLIGHTS Image Break (Focuses on the bottom of the cover) */}
+      {/* 3. HIGHLIGHTS Image Break */}
       <div className="h-24 md:h-32 w-full border-y-2 border-dark relative overflow-hidden bg-beige">
          <img src="/cover.png" alt="Highlights Banner" className="w-full h-full object-cover object-bottom" />
          <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
