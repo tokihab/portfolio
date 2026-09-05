@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 
 const DesktopIcon = ({ href, iconSrc, label }: { href: string, iconSrc: string, label: string }) => (
   <a href={href} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group cursor-pointer">
@@ -63,7 +64,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           {/* LEFT SIDEBAR */}
           <aside className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-col gap-5 order-2 lg:order-1">
             
-            {/* "Hire me pls" button that scrolls to and shakes the calendar */}
             <a 
               href="#calendar-widget" 
               onClick={handleHireClick}
@@ -72,7 +72,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               Hire me pls
             </a>
 
-            {/* Box 1: Vintage OS Links */}
             <div className="bg-bgWhite border-2 border-dark shadow-brutal p-4">
               <h3 className="font-space font-bold uppercase mb-4 border-b-2 border-dark pb-1 text-sm text-center">Link Me</h3>
               <div className="flex justify-around items-start">
@@ -82,7 +81,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               </div>
             </div>
 
-            {/* Box 2: Profile */}
             <div className="bg-bgWhite border-2 border-dark shadow-brutal p-4 text-center">
               <h3 className="font-space font-bold uppercase mb-3 text-sm border-b-2 border-dark pb-1">Toni (Me)</h3>
               <div className="border-2 border-dark bg-beige mb-4 p-1">
@@ -96,7 +94,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               </div>
             </div>
 
-            {/* Box 3: Calendar with ID and animated shake trigger */}
             <motion.div
               id="calendar-widget"
               key={shakeKey}
@@ -119,16 +116,40 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 </div>
               </a>
             </motion.div>
-
           </aside>
 
-          {/* RIGHT CONTENT FEED */}
-          <main className="bg-bgWhite border-2 border-dark shadow-brutal order-1 lg:order-2 flex flex-col overflow-hidden">
-            {children}
+          {/* RIGHT CONTENT FEED WITH FOOTER */}
+          <main className="order-1 lg:order-2 flex flex-col gap-6 overflow-hidden">
+            <div className="bg-bgWhite border-2 border-dark shadow-brutal flex flex-col">
+              {children}
+            </div>
+
+            {/* BRUTALIST FOOTER WITH FLYRANK BADGE */}
+            <footer className="bg-dark border-2 border-dark shadow-brutal p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-beige">
+              <div className="text-xs font-mono font-bold">
+                <p>© 2026 TONI IHAB.</p>
+                <p>SYSTEM.STATUS [ONLINE]</p>
+              </div>
+              <a 
+                href="https://aifluency.flyrank.ai/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-105 transition-transform"
+              >
+                {/* Replace src with the exact badge URL they provided if it differs */}
+                <img 
+                  src="https://internship-badge.netlify.app/flyrank-badge-light.svg" 
+                  alt="FlyRank Certified Graduate" 
+                  className="h-12 w-auto [image-rendering:pixelated]" 
+                  loading="lazy"
+                />
+              </a>
+            </footer>
           </main>
 
         </div>
       </div>
+      <Analytics />
     </>
   );
 }

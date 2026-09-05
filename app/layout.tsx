@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import ClientLayout from './ClientLayout';
@@ -6,9 +6,27 @@ import ClientLayout from './ClientLayout';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'Toni Ihab | AI Developer',
   description: 'Portfolio of Toni Ihab, an AI Developer specializing in NLP, Egyptian Arabic text analysis (MASRISENSE), and real-time voice agents.',
+  manifest: '/favicon-package/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon-package/favicon.ico' },
+      { url: '/favicon-package/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-package/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicon-package/apple-touch-icon.png' },
+    ],
+  },
   openGraph: {
     title: 'Toni Ihab | AI Developer',
     description: 'Bringing AI to life in real software, from training models to building smart, working agents.',
