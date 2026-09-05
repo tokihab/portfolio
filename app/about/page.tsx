@@ -113,6 +113,28 @@ export default function About() {
             {activeTab === 'experience' && (
               <>
                 <div className="bg-bgWhite border-2 border-dark p-4 shadow-[4px_4px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#4A3728] transition-all">
+                  <div className="flex justify-between items-start gap-2">
+                    <div>
+                      <h4 className="font-bold font-space text-lg">FlyRank Internship</h4>
+                      <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">AI & ML Engineer Intern | 2026</p>
+                    </div>
+                    <a 
+                      href="/capstone.ipynb.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-[10px] md:text-xs shadow-[2px_2px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all shrink-0"
+                    >
+                      View_Paper.pdf
+                    </a>
+                  </div>
+                  <ul className="text-sm font-medium list-disc list-inside space-y-1">
+                    <li>Completed an intensive, self-paced engineering program spanning multiple specialized tracks: <span className="font-bold">AI Fluency, Machine Learning, and Backend Architecture</span>.</li>
+                    <li>Built and deployed end-to-end machine learning pipelines, trained predictive models on massive production datasets, and validated output integrity.</li>
+                    <li>Authored and published a complete capstone research paper analyzing web search signals to predict page traffic decline.</li>
+                  </ul>
+                </div>
+
+                <div className="bg-bgWhite border-2 border-dark p-4 shadow-[4px_4px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[2px_2px_0px_#4A3728] transition-all">
                   <h4 className="font-bold font-space text-lg">Elsewedy Electric</h4>
                   <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">AI Engineer Extern | 2026</p>
                   <ul className="text-sm font-medium list-disc list-inside space-y-1">
