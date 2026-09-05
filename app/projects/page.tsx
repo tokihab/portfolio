@@ -250,6 +250,7 @@ export default function Projects() {
                                     src={`https://www.youtube.com/embed/${project.videoId}?rel=0`}
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen={true}
+                                    loading="lazy"
                                   ></iframe>
                                 ) : (
                                   <div className="w-full h-full relative">
@@ -257,6 +258,7 @@ export default function Projects() {
                                       src={project.image} 
                                       alt={project.title} 
                                       className="w-full h-full object-cover object-center [image-rendering:pixelated] contrast-150 brightness-90 sepia-[0.4] saturate-75 scale-105"
+                                      loading="lazy"
                                     />
                                     {/* Retro pixel overlay grid */}
                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-60"></div>
@@ -276,6 +278,7 @@ export default function Projects() {
                                     src={project.bookmarkImage} 
                                     alt="" 
                                     className="absolute inset-0 w-full h-full object-cover opacity-20 filter sepia contrast-150 [image-rendering:pixelated] pointer-events-none"
+                                    loading="lazy"
                                   />
                                 )}
                                 <div className="w-6 h-6 border-2 border-beige flex items-center justify-center text-beige font-mono text-[10px] font-bold shrink-0 z-10 bg-dark/90">

@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* 3. HIGHLIGHTS Image Break */}
       <div className="h-24 md:h-32 w-full border-y-2 border-dark relative overflow-hidden bg-beige">
-         <img src="/cover.png" alt="Highlights Banner" className="w-full h-full object-cover object-bottom" />
+         <img src="/cover.png" alt="Highlights Banner" className="w-full h-full object-cover object-bottom" loading="lazy" />
          <div className="absolute inset-0 flex items-center justify-center p-4 text-center">
             <h2 className="text-3xl md:text-5xl font-space font-extrabold text-bgWhite drop-shadow-[3px_3px_0px_#4A3728] uppercase tracking-widest">
               Highlights
@@ -38,12 +38,20 @@ export default function Home() {
          </div>
       </div>
 
-      {/* Section 1 */}
+      {/* Section 1: MASRISENSE */}
       <div className="p-6 md:p-8 bg-bgWhite flex flex-col">
         <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-6 border-b-2 border-dark pb-2">MASRISENSE: KALAMNA's Text Analysis on Egyptian Arabic Dialect</h3>
-        <div className="w-full aspect-video border-2 border-dark bg-dark shadow-brutal-sm mb-6">
-          <iframe src="https://t0kii-tamasriberts.hf.space" className="w-full h-full border-0" title="Gradio Text Analysis"></iframe>
+        
+        {/* FIXED MOBILE WRAPPER: 600px tall on mobile, aspect-video on desktop */}
+        <div className="w-full h-[600px] lg:h-auto lg:aspect-video border-2 border-dark bg-dark shadow-brutal-sm mb-6">
+          <iframe 
+            src="https://t0kii-tamasriberts.hf.space" 
+            className="w-full h-full border-0" 
+            title="Gradio Text Analysis"
+            loading="lazy"
+          ></iframe>
         </div>
+        
         <div className="w-full h-100 mb-6">
           <Slider slides={textAnalysisSlides} />
         </div>
@@ -55,18 +63,22 @@ export default function Home() {
         </ul>
       </div>
 
-      {/* Section 2 */}
+      {/* Section 2: KALAMNA */}
       <div className="p-6 md:p-8 bg-offWhite flex flex-col">
         <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-6 border-b-2 border-dark pb-2">KALAMNA Egyptian dialect cs voice agent</h3>
-        <div className="w-full aspect-video border-2 border-dark bg-dark shadow-brutal-sm mb-6 relative">
+        
+        {/* FIXED MOBILE WRAPPER: Responsive heights for smaller screens before snapping to aspect-video */}
+        <div className="w-full h-[250px] sm:h-[350px] md:aspect-video border-2 border-dark bg-dark shadow-brutal-sm mb-6 relative">
            <iframe 
             className="absolute top-0 left-0 w-full h-full" 
             src="https://www.youtube.com/embed/XhfqIOjIs9w" 
             title="YouTube video player" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen>
-          </iframe>
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
         </div>
+        
         <div className="w-full h-100 mb-6">
           <Slider slides={voicePipelineSlides} />
         </div>
