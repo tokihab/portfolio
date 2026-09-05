@@ -119,7 +119,7 @@ export default function About() {
                       <p className="text-xs font-mono border-2 border-dark inline-block px-2 py-1 my-2 bg-beige">AI & ML Engineer Intern | 2026</p>
                     </div>
                     <a 
-                      href="/capstone.ipynb.pdf" 
+                      href="/capstone.ipynb - Colab.pdf"
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="px-3 py-1 bg-dark text-beige border-2 border-dark font-space font-bold uppercase text-[10px] md:text-xs shadow-[2px_2px_0px_#4A3728] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_#4A3728] transition-all shrink-0"
