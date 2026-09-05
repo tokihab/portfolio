@@ -6,6 +6,8 @@ import ClientLayout from './ClientLayout';
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
+const baseUrl = 'https://portfolio-six-pied-61a03qtk3t.vercel.app';
+
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
@@ -14,6 +16,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: 'Toni Ihab | AI Developer',
   description: 'Portfolio of Toni Ihab, an AI Developer specializing in NLP, Egyptian Arabic text analysis (MASRISENSE), and real-time voice agents.',
   manifest: '/site.webmanifest',
@@ -30,11 +33,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Toni Ihab | AI Developer',
     description: 'Bringing AI to life in real software, from training models to building smart, working agents.',
-    url: 'https://toniihab.vercel.app',
+    url: baseUrl,
     siteName: 'Toni Ihab Portfolio',
     images: [
       {
-        url: 'https://toniihab.vercel.app/cover.png', 
+        url: '/cover.png', 
         width: 1200,
         height: 630,
         alt: 'Toni Ihab - AI Developer Portfolio',
@@ -42,6 +45,12 @@ export const metadata: Metadata = {
     ],
     locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Toni Ihab | AI Developer',
+    description: 'Bringing AI to life in real software, from training models to building smart, working agents.',
+    images: ['/cover.png'],
   },
 };
 
