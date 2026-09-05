@@ -118,36 +118,37 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             </motion.div>
           </aside>
 
-          {/* RIGHT CONTENT FEED WITH FOOTER */}
+          {/* RIGHT CONTENT FEED */}
           <main className="order-1 lg:order-2 flex flex-col gap-6 overflow-hidden">
             <div className="bg-bgWhite border-2 border-dark shadow-brutal flex flex-col">
               {children}
             </div>
-
-            {/* BRUTALIST FOOTER WITH FLYRANK BADGE */}
-            <footer className="bg-dark border-2 border-dark shadow-brutal p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-beige">
-              <div className="text-xs font-mono font-bold space-y-1">
-                <p>© 2026 TONI IHAB.</p>
-                <p>SYSTEM.STATUS [ONLINE]</p>
-              </div>
-              <a 
-                href="https://aifluency.flyrank.ai/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:scale-105 transition-transform"
-                title="FlyRank Verification Page"
-              >
-                <img 
-                  src="https://internship-badge.netlify.app/flyrank-badge-light.svg" 
-                  alt="FlyRank Certified Graduate Badge" 
-                  className="h-12 w-auto [image-rendering:pixelated]" 
-                  loading="lazy"
-                />
-              </a>
-            </footer>
           </main>
 
         </div>
+
+        {/* FULL WIDTH BRUTALIST FOOTER WITH FLYRANK BADGE */}
+        <footer className="bg-dark border-2 border-dark shadow-brutal p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-beige w-full relative z-10">
+          <div className="text-xs font-mono font-bold space-y-1">
+            <p>© 2026 TONI IHAB.</p>
+            <p>SYSTEM.STATUS [ONLINE]</p>
+          </div>
+          <a 
+            href="https://aifluency.flyrank.ai/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:scale-105 transition-transform"
+            title="FlyRank Verification Page"
+          >
+            <img 
+              src="https://internship-badge.netlify.app/flyrank-badge-light.svg" 
+              alt="FlyRank Certified Graduate Badge" 
+              className="h-12 w-auto [image-rendering:pixelated]" 
+              loading="lazy"
+            />
+          </a>
+        </footer>
+
       </div>
       <Analytics />
     </>

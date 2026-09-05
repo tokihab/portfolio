@@ -16,15 +16,15 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Toni Ihab | AI Developer',
   description: 'Portfolio of Toni Ihab, an AI Developer specializing in NLP, Egyptian Arabic text analysis (MASRISENSE), and real-time voice agents.',
-  manifest: '/favicon-package/site.webmanifest',
+  manifest: '/site.webmanifest',
   icons: {
     icon: [
-      { url: '/favicon-package/favicon.ico' },
-      { url: '/favicon-package/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-package/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.ico' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
     ],
     apple: [
-      { url: '/favicon-package/apple-touch-icon.png' },
+      { url: '/apple-touch-icon.png' },
     ],
   },
   openGraph: {
