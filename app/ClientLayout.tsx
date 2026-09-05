@@ -126,7 +126,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
             {/* BRUTALIST FOOTER WITH FLYRANK BADGE */}
             <footer className="bg-dark border-2 border-dark shadow-brutal p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-beige">
-              <div className="text-xs font-mono font-bold">
+              <div className="text-xs font-mono font-bold space-y-1">
                 <p>© 2026 TONI IHAB.</p>
                 <p>SYSTEM.STATUS [ONLINE]</p>
               </div>
@@ -135,11 +135,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="hover:scale-105 transition-transform"
+                title="FlyRank Verification Page"
               >
-                {/* Replace src with the exact badge URL they provided if it differs */}
                 <img 
                   src="https://internship-badge.netlify.app/flyrank-badge-light.svg" 
-                  alt="FlyRank Certified Graduate" 
+                  alt="FlyRank Certified Graduate Badge" 
                   className="h-12 w-auto [image-rendering:pixelated]" 
                   loading="lazy"
                 />
