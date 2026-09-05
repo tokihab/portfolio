@@ -185,7 +185,7 @@ export default function Projects() {
       
       {/* Header */}
       <h2 className="text-3xl font-space font-bold inline-block border-2 border-dark bg-dark text-beige px-6 py-2 shadow-brutal uppercase self-start mb-8">
-        Project Archive
+        Archives
       </h2>
 
       {/* ================= MULTI-OPEN SLIDING DRAWERS ================= */}

@@ -42,11 +42,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="sticky top-0 z-50 bg-beige w-full pt-4 md:pt-8 pb-6">
           <div className="max-w-6xl mx-auto flex flex-col px-4 md:px-8">
             
-            {/* HABBO FOLDER TABS */}
+            {/* HABBO FOLDER TABS - Renamed for clarity */}
             <nav className="flex flex-wrap items-end px-6 gap-2 relative z-10 -mb-1">
-              <Link href="/" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">highlight</Link>
-              <Link href="/about" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Diary</Link>
-              <Link href="/projects" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Toys</Link>
+              <Link href="/" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Highlight</Link>
+              <Link href="/about" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">About</Link>
+              <Link href="/projects" className="px-5 pt-2 pb-2 mt-2 hover:mt-0 hover:pt-4 bg-dark text-beige rounded-t-xl font-space font-bold uppercase text-xs md:text-sm transition-all">Projects</Link>
             </nav>
 
             {/* BANNER */}

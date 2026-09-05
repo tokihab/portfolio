@@ -40,8 +40,13 @@ export default function Home() {
 
       {/* Section 1: MASRISENSE */}
       <div className="p-6 md:p-8 bg-bgWhite flex flex-col">
-        <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-6 border-b-2 border-dark pb-2">MASRISENSE: KALAMNA's Text Analysis on Egyptian Arabic Dialect</h3>
+        <h3 className="font-space font-bold uppercase text-xl md:text-2xl mb-2 border-b-2 border-dark pb-2">MASRISENSE: KALAMNA's Text Analysis on Egyptian Arabic Dialect</h3>
         
+        {/* Added disclaimer for cold-boot load times */}
+        <p className="text-xs font-mono font-bold text-red-600 mb-4 bg-beige inline-block px-2 py-1 border-2 border-dark shadow-brutal-sm self-start">
+          [!] SYSTEM NOTE: Model runs on a free CPU tier. Please allow up to 30 seconds for initial cold boot.
+        </p>
+
         {/* FIXED MOBILE WRAPPER: 600px tall on mobile, aspect-video on desktop */}
         <div className="w-full h-[600px] lg:h-auto lg:aspect-video border-2 border-dark bg-dark shadow-brutal-sm mb-6">
           <iframe 
